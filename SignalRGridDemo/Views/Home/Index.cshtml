@@ -1,0 +1,24 @@
+﻿<h1>Employees</h1>
+
+<div class="loading-indicator" data-bind="visible: loading()"></div>
+<table class="table" data-bind="visible: !loading()">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: employees" >
+        <tr>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: Email"></td>
+            <td data-bind="text: Salary"></td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="~/Scripts/knockout-2.2.1.js"></script>
+    <script src="~/App/EmployeeViewModel.js"></script>
+}
