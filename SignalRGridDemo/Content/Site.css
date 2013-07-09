@@ -1,5 +1,5 @@
-﻿.loading-indicator {
-    background-image: url("images/ajax_loading.png");
-    width:16px;
-    height:16px;
+.loading-indicator {
+    background-image: url("../Images/preloader.gif");
+    width:28px;
+    height:28px;
 }
