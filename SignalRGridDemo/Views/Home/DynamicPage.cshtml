@@ -1,0 +1,79 @@
+<p>Currently generated <span data-bind='text: controls().length'>&nbsp;</span> control(s)</p>
+<h2 class="label label-info label-main-header"><span data-bind="text: AppName"></span></h2>
+<table data-bind='visible: controls().length > 0'>
+    <tbody data-bind='foreach: controls'>
+        <tr>
+            <!-- ko if: type == 'TXT' -->
+            <td data-bind="template: { name: 'text-template', data: $data }"></td>
+            <!-- /ko -->
+            <!-- ko if: type == 'LBL' -->
+            <td data-bind="template: { name: 'label-template', data: $data }"></td>
+            <!-- /ko -->
+            <!-- ko if: type == 'DDL' -->
+            <td data-bind="template: { name: 'dropdown-template', data: $data }"></td>
+            <!-- /ko -->
+            <!-- ko if: type == 'CHK' -->
+            <td data-bind="template: { name: 'checkbox-template', data: $data }"></td>
+            <!-- /ko -->
+            <!-- ko if: type == 'ACT' -->
+            <td data-bind="visible: actions.length > 0, template: { name: 'action-template', data: $data }"></td>
+            <!-- /ko -->
+        </tr>
+    </tbody>
+    <tr>
+        <td style="text-align: right;">
+            <button class="btn" data-bind='enable: controls().length > 0, click: save'><span data-bind="    text: button" /></button>
+        </td>
+    </tr>
+</table>
+
+
+<script type="text/html" id="text-template">
+    <span class="label customlabel" data-bind="text: name" />
+    <input type="text" class="customtext" data-bind="value: value" />
+</script>
+<script type="text/html" id="label-template">
+    <span class="label customlabel" data-bind="text: name" /><span data-bind="    text: value" />
+</script>
+<script type="text/html" id="dropdown-template">
+    <span class="label customlabel" data-bind="text: name" />
+    <select data-bind="options: availableList, value: value"></select>
+</script>
+<script type="text/html" id="checkbox-template">
+    <span class="label customlabel" data-bind="text: name" />
+    <select data-bind="options: availableList, selectedOptions: chosenItems" multiple="true"></select>
+</script>
+<script type="text/html" id="action-template">
+    <span class="label customlabel" data-bind="text: name" />
+    <select data-bind="options: actions, value: value"></select>
+</script>
+
+<style>
+    .label-main-header {
+        font-family: 'Segoe UI';
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 7px;
+        font-size: 14px;
+        background-color: #292a60;
+    }
+
+    .customlabel {
+        width: 100px !important;
+        margin-right: 10px;
+        font-family: 'Segoe UI';
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    .customtext input {
+        height: 23px !important;
+        margin: 0px;
+        padding: 0px 0px 0px 5px;
+    }
+</style>
+
+@section scripts{
+    <script src="~/Scripts/knockout-2.3.0.js"></script>
+    <script src="~/App/RuntimeViewModel.js"></script>
+}
